@@ -1,14 +1,20 @@
--src folder/
-index.js //server
-models/
-controllers/
-middlewares/
-services/
-utils/ extra utility function like helper function
-config/
-/respository
+# Welcome to Flights Services
 
-we won't upload all these tests file in deployment phase we do gitignore to them.
--tests folder[ but later on we will be doing it]
-   -static/
-   -temp
+## Project Setup
+
+-Clone the project on your system
+-Execute 'npm install'
+
+- Create a '.env' file in root directory and add the following environment variables -`PORT=3000`
+  -Insise the `src/config` folder create a new file `config.json` and then add the the following json
+  ```
+  {
+  "development": {
+  "username": "<YOUR_DB_LOGIN_NAME>",
+  "password": "<YOUR-DB-PASSWORD>",
+  "database": "Flight_Search_DB",
+  "host": "127.0.0.1",
+  "dialect": "mysql"
+  },
+  ```
+  -Once you have added your db config as listed above, go to the scr folder from your terminal and execute `npx sequelize db:create`
