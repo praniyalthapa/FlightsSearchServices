@@ -29,6 +29,7 @@ class CityRepository{
 
     }
     async updateCity(cityId,data){  //to update a particular city you have to fetch what data you want to update we have passed two parameters cityid and data as there is only one object inside city.js file i.e name
+        //data is an object it will look like {name:"Praniyal"}
               try {
                 const city=await City.update(data,{ ////this .update wants two parameter one is any data and next one is object which have where clause as shown;
                     where:{
