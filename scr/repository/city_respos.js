@@ -13,6 +13,10 @@ class CityRepository{
        throw{error};
         }
     }
+
+
+
+
     async deleteCity(cityId){
         try{
             await City.distroy({
@@ -28,6 +32,10 @@ class CityRepository{
         }
 
     }
+
+
+
+
     async updateCity(cityId,data){  //to update a particular city you have to fetch what data you want to update we have passed two parameters cityid and data as there is only one object inside city.js file i.e name
         //data is an object it will look like {name:"Praniyal"}
               try {
@@ -41,6 +49,10 @@ class CityRepository{
                 throw{error};
               }
     }
+
+
+
+    
     async getCity(cityId){
    try {
     const city=await City.findByPk(cityId);
