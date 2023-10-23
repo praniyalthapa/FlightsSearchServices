@@ -26,7 +26,7 @@ const distroy=async(req,res)=>{
     try {
         const response= await cityService.deleteCity(req.params.id);
     return res.status(200).json({
-        data:city,
+        data:response,
         success:true,
         message:'City is deleted',
         err:{}
@@ -48,7 +48,7 @@ const distroy=async(req,res)=>{
 const get=async(req,res)=>{
     try {
         const city= await cityService.getCity(req.params.id);
-        return res.status(201).json({
+        return res.status(200).json({
             data:city,
             success:true,
             message:'Successfully got city',
@@ -69,8 +69,8 @@ const get=async(req,res)=>{
 //update is done using PATCH/PUT -> /city/:id  req.body
 const update=async(req,res)=>{
         try {
-            const city= await cityService.getCity(req.params.id.req.body);
-            return res.status(201).json({
+            const city= await cityService.updateCity(req.params.id, req.body);
+            return res.status(200).json({
                 data:city,
                 success:true,
                 message:'Successfully updated city',
