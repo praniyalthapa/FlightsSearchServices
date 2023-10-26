@@ -1,5 +1,6 @@
 //https://sequelize.org/docs/v7/querying/insert/
 const {City}= require('../models/index');
+const {Op}=require('sequelize');
 class CityRepository{
     async createCity({name}){ //{name:"kathmandu"} 
         try{
@@ -57,27 +58,35 @@ class CityRepository{
         }
     }  
 
-    async getCity(cityId){
-   try {
-    const city=await City.findByPk(cityId);
-    return city;
-    
-   } catch (error) {
-    console.log("Something went wrong!");
-    throw{error};
-   }
-    }
-    async getAllCities(){
+    async getCity(cityId) {
         try {
-            const cities=await City.findAll();
-            return cities;
-            
+            const city = await City.findByPk(cityId);
+            return city;
         } catch (error) {
-            console.log("Something went wrong!");
-            throw{error};
-            
+            console.log("Something went wrong in the repository layer");
+            throw {error};
         }
     }
-   
-} 
+    //https://sequelize.org/docs/v7/querying/operators/
+    async getAllCities(filter) { // filter can be empty also
+        try {
+            if(filter.name) {
+                const cities = await City.findAll({
+                    where: {
+                        name: {
+                            [Op.startsWith]: filter.name
+                        }
+                    }
+                });
+                return cities;
+            }
+            const cities = await City.findAll();
+            return cities;
+        } catch (error) {
+            console.log("Something went wrong in the repository layer");
+            throw {error};
+        }
+    }
+
+}
 module.exports=CityRepository;
