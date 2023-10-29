@@ -36,3 +36,11 @@
 ### Airport -> id,name,address,city_id,created_at,updated_at
 
 Relationship -> City has many airports and Airports belongs to a city (one to many relation).
+
+```
+npx sequelize mode:generate --name Airport --attributes name:String,address:String,cityId:integer
+npx sequelize db:migrate
+```
+
+To seed into seeders folder use :`npx sequelize seed:generate --name add-airports` command inside your scr folder.
+To seed all your data inside your database do:`npx sequelize db:seed:all`.
