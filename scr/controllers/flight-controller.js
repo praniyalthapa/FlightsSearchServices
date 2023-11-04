@@ -2,6 +2,10 @@ const {FlightService}=require('../services/index');
 const flightService=new FlightService();
 const create=async(req,res)=>{
     try {
+        let flightRequestData={
+            flightNumber:req.body.flightNumber,
+            
+        }
         const flight=await flightService.createFlight(req.body);
         return res.status(201).json({
             data:flight,
