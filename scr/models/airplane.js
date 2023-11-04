@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Airplane extends Model {
     /**
@@ -21,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     capacity: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 200
+      defaultValue: 300
     },
   }, {
     sequelize,

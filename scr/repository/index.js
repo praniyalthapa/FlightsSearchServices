@@ -3,6 +3,8 @@
 module.exports={
     CityRepository: require('./city_respos'),
     FlightRepository: require('./flight-repos'),
-    AirplaneRepository:require('./airplane-repos')
-
+    AirplaneRepository:require('./airplane-repos'),
+    AirportRepository:require('./airport-repository'),
+    CrudRepository:require('./crud-repository')
+    
 }

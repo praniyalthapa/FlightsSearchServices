@@ -1,6 +1,7 @@
 //https://sequelize.org/docs/v7/querying/insert/
-const {City}= require('../models/index');
+
 const {Op}=require('sequelize');
+const {City}= require('../models/index');
 class CityRepository{
     async createCity({name}){ //{name:"kathmandu"} 
         try{

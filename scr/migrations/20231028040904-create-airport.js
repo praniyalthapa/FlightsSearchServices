@@ -18,14 +18,13 @@ module.exports = {
       },
       cityId: {
         type: Sequelize.INTEGER,
-        onDelete:'CASCADE',
-        references:{
-          model:"Cities", //from cities table/model you have id column which is represented as a cityId
-          key:"id",
-          as:"cityId"
-
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Cities',
+          key: 'id',
+          as: 'cityId'
         },
-        allowNull:false
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

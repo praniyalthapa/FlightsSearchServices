@@ -14,7 +14,7 @@ module.exports = {
     */
    await queryInterface.bulkInsert('Airplanes',[
     {
-    modelNumber:'Airbus A320',
+      modelNumber:'Airbus A320',
     capacity:130,
     createdAt:new Date(),
      updatedAt:new Date()
@@ -43,9 +43,15 @@ module.exports = {
     capacity:239,
     createdAt:new Date(),
      updatedAt:new Date()
-   }
+   },
+   {
+    modelNumber:'Boeing 757',
+    capacity:239 ,
+    createdAt:new Date(),
+    updatedAt:new Date()
+   },
 
-  ],{})
+  ],{});
   },
 
   async down (queryInterface, Sequelize) {
