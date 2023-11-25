@@ -67,7 +67,7 @@ const get = async (req, res) => {
         return res.status(500).json({
             data: {},
             success: false,
-            message: 'Not able to fetch the flight',
+            message: 'Not able to fetch flight',
             err: error
         });
     }
