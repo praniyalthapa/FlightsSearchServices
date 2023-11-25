@@ -1,61 +1,57 @@
-class CrudService{
-    constructor(repository){
-        this.repository=repository;
+class CrudService {
+    constructor(repository) {
+        this.repository = repository;
+    }
 
-    }
-    async create(data){
-     try {
-        const respose=await this.repository.create(data);
-        return respose;
-        
-     } catch (error) {
-        console.log("Oops!something went wrong!");
-        throw error;
-     }
-    }
-    async destroy(id){
- try {
-    const respose=await this.repository.destroy(id);
-    return respose;
-    
- } catch (error) {
-    console.log("Oops!something went wrong!");
-        throw error;
-    
- }
-    }
-    async get(id){
+    async create(data) {
         try {
-            const respose=await this.repository.get(id);
-    return respose;
-            
+            const response = await this.repository.create(data);
+            return response;
         } catch (error) {
-            console.log("Oops!something went wrong!");
-        throw error;
+            console.log("something went wrong in crud service");
+            throw error;
         }
-
     }
-    async getAll(){
-        try {
-            const respose=await this.repository.getAll();
-    return respose;
-            
-        } catch (error) {
-            console.log("Oops!something went wrong!");
-        throw error;
-            
-        }
 
+    async destroy(id) {
+        try {
+            const response = await this.repository.destroy(id);
+            return response;
+        } catch (error) {
+            console.log("something went wrong in crud service");
+            throw error;
+        }
     }
-    async update(id,data){
-        try {
-            const respose=await this.repository.update(id,data);
-    return respose;
-        } catch (error) {
-            console.log("Oops!something went wrong!");
-        throw error;
-        }
 
+    async get(id) {
+        try {
+            const response = await this.repository.get(id);
+            return response;
+        } catch (error) {
+            console.log("something went wrong in crud service");
+            throw error;
+        }
+    }
+
+    async getAll() {
+        try {
+            const response = await this.repository.getAll();
+            return response;
+        } catch (error) {
+            console.log("something went wrong in crud service");
+            throw error;
+        }
+    }
+
+    async update(id, data) {
+        try {
+            const response = await this.repository.update(id, data);
+            return response;
+        } catch (error) {
+            console.log("something went wrong in crud service");
+            throw error;
+        }
     }
 }
-module.exports=CrudService;
+
+module.exports = CrudService;

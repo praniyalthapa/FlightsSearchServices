@@ -1,44 +1,129 @@
-//https://sequelize.org/docs/v7/querying/insert/
+// //https://sequelize.org/docs/v7/querying/insert/
 
-const {Op}=require('sequelize');
-const {City}= require('../models/index');
-class CityRepository{
-    async createCity({name}){ //{name:"kathmandu"} 
-        try{
-                const city=await City.create({
-                    name  
-                });
-                return city;
-        }
-        catch(error){
-       console.log("Something went wrong!");
-       throw{error};
+// const {Op}=require('sequelize');
+// const {City}= require('../models/index');
+// class CityRepository{
+//     async createCity({name}){ //{name:"kathmandu"} 
+//         try{
+//                 const city=await City.create({
+//                     name  
+//                 });
+//                 return city;
+//         }
+//         catch(error){
+//        console.log("Something went wrong!");
+//        throw{error};
+//         }
+//     }
+
+
+
+
+//     async deleteCity(cityId){
+//         try{
+//             await City.destroy({
+//                 where:{
+//                     id:cityId
+//                 }
+//             });
+//            return true;
+//         }
+//         catch(error){
+//             console.log("Something went wrong!");
+//             throw{error};
+//         }
+
+//     }
+
+
+
+
+//     async updateCity(cityId, data) { // {name: "Praniyal"}
+//         try {
+//             // The below approach also works but will not return updated object
+//             // if we are using Pg then returning: true can be used, else not
+//             // const city = await City.update(data, {
+//             //     where: {
+//             //         id: cityId
+//             //     },
+                 
+//             // });
+//            // for getting updated data in mysql we use the below approach
+//             const city = await City.findByPk(cityId);
+//             city.name = data.name;
+//             await city.save();
+//             return city;
+//         } catch (error) {
+//             console.log("Something went wrong in the repository layer");
+//             throw {error};
+//         }
+//     }  
+
+//     async getCity(cityId) {
+//         try {
+//             const city = await City.findByPk(cityId);
+//             return city;
+//         } catch (error) {
+//             console.log("Something went wrong in the repository layer");
+//             throw {error};
+//         }
+//     }
+//     //https://sequelize.org/docs/v7/querying/operators/
+//     async getAllCities(filter) { // filter can be empty also
+//         try {
+//             if(filter.name) {
+//                 const cities = await City.findAll({
+//                     where: {
+//                         name: {
+//                             [Op.startsWith]: filter.name
+//                         }
+//                     }
+//                 });
+//                 return cities;
+//             }
+//             const cities = await City.findAll();
+//             return cities;
+//         } catch (error) {
+//             console.log("Something went wrong in the repository layer");
+//             throw {error};
+//         }
+//     }
+
+// }
+// module.exports=CityRepository;
+const { Op } = require('sequelize');
+
+const { City } = require('../models/index');
+
+class CityRepository {
+
+    async createCity({ name }) { 
+        try {
+            const city = await City.create({
+                name
+            });
+            return city;
+        } catch (error) {
+            console.log("Something went wrong in the repository layer");
+            throw {error};
         }
     }
 
-
-
-
-    async deleteCity(cityId){
-        try{
+    async deleteCity(cityId) {
+        try {
             await City.destroy({
-                where:{
-                    id:cityId
+                where: {
+                    id: cityId
                 }
             });
-           return true;
+            return true;
+        } catch (error) {
+            console.log("Something went wrong in the repository layer");
+            throw {error};
         }
-        catch(error){
-            console.log("Something went wrong!");
-            throw{error};
-        }
-
     }
 
-
-
-
-    async updateCity(cityId, data) { // {name: "Praniyal"}
+    async updateCity(cityId, data) { // {name: "Prayagraj"}
         try {
             // The below approach also works but will not return updated object
             // if we are using Pg then returning: true can be used, else not
@@ -46,9 +131,9 @@ class CityRepository{
             //     where: {
             //         id: cityId
             //     },
-                 
+            //      
             // });
-           // for getting updated data in mysql we use the below approach
+            // for getting updated data in mysql we use the below approach
             const city = await City.findByPk(cityId);
             city.name = data.name;
             await city.save();
@@ -57,7 +142,7 @@ class CityRepository{
             console.log("Something went wrong in the repository layer");
             throw {error};
         }
-    }  
+    }
 
     async getCity(cityId) {
         try {
@@ -68,7 +153,7 @@ class CityRepository{
             throw {error};
         }
     }
-    //https://sequelize.org/docs/v7/querying/operators/
+
     async getAllCities(filter) { // filter can be empty also
         try {
             if(filter.name) {
@@ -90,4 +175,5 @@ class CityRepository{
     }
 
 }
-module.exports=CityRepository;
+
+module.exports = CityRepository;

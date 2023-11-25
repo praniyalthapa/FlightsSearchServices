@@ -1,18 +1,26 @@
-
-const {ClientErrorCodes}=require('../utils/error-code');
-const valideCreateFlight=(req,res,next)=>{
-    if(!req.body.flightNumber || !req.body.airplaneId || !req.body.departureAirportId || !req.body. arrivalAirportId
-        || !req.body. arrivalTime || !req.body.departureTime || !req.body.price){
-            return res.status(ClientErrorCodes.BAD_REQUEST).json({ //400 bocz it is for bad request it is for not following api contract 
-                 data:{},
-                 success:true,
-                 message:"Request body is invalide for createflight",
-                 err:"Mandatory property is missing"
-            });
-
+const { ClientErrorCodes } = require('../utils/error-code');
+const validateCreateFlight = (req, res, next) => {
+    if(
+        !req.body.flightNumber ||
+        !req.body.airplaneId ||
+        !req.body.departureAirportId ||
+        !req.body.arrivalAirportId ||
+        !req.body.arrivalTime || 
+        !req.body.departureTime || 
+        !req.body.price
+    ) {
+        // if any of the body params is missing we come inside the if
+        return res.status(ClientErrorCodes.BAD_REQUEST).json({
+            data: {},
+            success: false,
+            message: 'Invalid request body for create flight',
+            err: 'Missing mandatory properties to create a flight'
+        });
     }
-    next();  //if every detail is present then if success is false then next middleware is called
+
+    next();
 }
-module.exports={
-    valideCreateFlight
+
+module.exports = {
+    validateCreateFlight
 }

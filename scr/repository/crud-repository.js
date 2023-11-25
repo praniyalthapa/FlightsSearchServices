@@ -1,79 +1,142 @@
-class CrudRepository{
-    constructor(model){
-        this.model=model;
+// class CrudRepository{
+//     constructor(model){
+//         this.model=model;
 
-    }
-    async create(data){
+//     }
+//     async create(data){
 
         
-     try {
-        const result=await this.model.create(data);
-        return result;
-     } catch (error) {
-        console.log("something went wrong");
-        throw{error};
+//      try {
+//         const result=await this.model.create(data);
+//         return result;
+//      } catch (error) {
+//         console.log("something went wrong");
+//         throw{error};
         
-     }
+//      }
+//     }
+//     async destroy(modelId){
+//         try {
+//             await this.model.destroy({
+//                 where:{
+//                   id:modelId
+//                 }
+//             });
+//             return true;
+        
+//         } catch (error) {
+//            console.log("something went wrong");
+//            throw{error};
+           
+//         }
+
+//     }
+//     async get(modelId){
+//         try {
+//             const result=await this.model.findByPk(modelId);
+//             return result;
+        
+//         } catch (error) {
+//            console.log("something went wrong");
+//            throw{error};
+           
+//         }
+
+//     }
+//     async getAll(){
+//         try {
+//             const result=await this.model.findAll(modelId);
+//             return result;
+            
+//         } catch (error) {
+//             console.log("something went wrong!");
+//             throw{error};
+            
+//         }
+//     }
+//     async update(modelId,data){
+//         try {
+//             const result = await this.model.update(data, {
+//                     where: {
+//                         id: modelId
+//                     },
+                     
+//                 });
+        
+//         } catch (error) {
+//            console.log("something went wrong");
+//            throw{error};
+           
+//         }
+
+//     }
+
+// }
+// module.exports=CrudRepository;
+
+class CrudRespository {
+    constructor(model) {
+        this.model = model;
     }
-    async destroy(modelId){
+
+    async create(data) {
+        try {
+            const result = await this.model.create(data);
+            return result;
+        } catch (error) {
+            console.log("Something went wrong in crus repo");
+            throw error;
+        }
+    }
+
+    async destroy(modelId) {
         try {
             await this.model.destroy({
-                where:{
-                  id:modelId
+                where: {
+                    id: modelId
                 }
             });
             return true;
-        
         } catch (error) {
-           console.log("something went wrong");
-           throw{error};
-           
+            console.log("Something went wrong in crus repo");
+            throw error;
         }
+    }
 
-    }
-    async get(modelId){
+    async get(modelId) {
         try {
-            const result=await this.model.findByPk(modelId);
+            const result = await this.model.findByPk(modelId);
             return result;
-        
         } catch (error) {
-           console.log("something went wrong");
-           throw{error};
-           
+            console.log("Something went wrong in crus repo");
+            throw error;
         }
+    }
 
-    }
-    async getAll(){
+    async getAll() {
         try {
-            const result=await this.model.findAll(modelId);
+            const result = await this.model.findAll();
             return result;
-            
         } catch (error) {
-            console.log("something went wrong!");
-            throw{error};
-            
+            console.log("Something went wrong in crus repo");
+            throw error;
         }
     }
-    async update(modelId,data){
+
+    async update(modelId, data) {
         try {
             const result = await this.model.update(data, {
-                    where: {
-                        id: modelId
-                    },
-                     
-                });
-        
+                where: {
+                    id: modelId
+                },
+                 
+            });
+            return result;
         } catch (error) {
-           console.log("something went wrong");
-           throw{error};
-           
+            console.log("Something went wrong in crus repo");
+            throw error;
         }
-
     }
-
-
-
-
-
 }
-module.exports=CrudRepository;
+
+module.exports = CrudRespository;
